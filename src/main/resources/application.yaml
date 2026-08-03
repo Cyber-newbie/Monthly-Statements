@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: mock
+    active: local
   application:
     name: task
 springdoc:
