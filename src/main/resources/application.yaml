@@ -13,3 +13,5 @@ task:
     url: ${TASK_BANK_API_URL:http://localhost:8081} # base URL for bank API (/accounts/{id}/statements/{yyyy-MM})
   outbound-api:
     url: ${TASK_OUTBOUND_API_URL:http://localhost:8082/monthly-balances} # endpoint that accepts monthly balances POST
+server:
+  forward-headers-strategy: framework
