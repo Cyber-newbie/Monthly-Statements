@@ -12,6 +12,59 @@ A Spring Boot application that fetches monthly bank statements from an external 
 
 ---
 
+## Demo
+
+The live deployment is currently running with the **`mock` Spring profile**.
+
+This demonstrates the complete application workflow without requiring the real Bank API or Outbound API. It reflects a common enterprise development approach where mock implementations allow development, testing, CI/CD, and demonstrations to continue while external services are still under development.
+
+---
+
+## Spring Profiles
+
+The application supports two runtime profiles.
+
+### `mock`
+
+Uses mock implementations of the external integrations.
+
+Intended for:
+
+- Local development
+- Demonstrations
+- CI/CD
+- Development before external APIs are available
+
+Run locally with:
+
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=mock
+```
+
+or set:
+
+```properties
+SPRING_PROFILES_ACTIVE=mock
+```
+
+---
+
+### Default profile
+
+Uses the real HTTP integrations:
+
+- `HttpBankApiClient`
+- `HttpOutboundApiClient`
+
+When running without the `mock` profile, the application communicates with the configured external Bank API and Outbound API.
+
+To use the real integrations:
+
+- Remove `SPRING_PROFILES_ACTIVE=mock` (or do not set it).
+- Configure the required API endpoints in `application.yml` (or via environment variables):
+
+---
+
 ## Architecture
 
 ![Layered Architecture](./layered_architecture.png)
